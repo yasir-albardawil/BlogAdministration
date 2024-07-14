@@ -1,0 +1,15 @@
+﻿<div class="card">
+    <div class="card-header bg-danger text-white">
+        <h1>An Error Occurred</h1>
+    </div>
+    <div class="card-body">
+        <p class="card-text">@Model.Message</p>
+        @if (!string.IsNullOrEmpty(Model.Details))
+        {
+            <div class="mt-4">
+                <h2>Details</h2>
+                <pre class="bg-light p-3">@Model.Details</pre>
+            </div>
+        }
+    </div>
+</div>

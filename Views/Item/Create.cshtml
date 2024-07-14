@@ -1,0 +1,98 @@
+﻿@model PieCreateViewModel
+
+@if (!ViewData.ModelState.IsValid)
+{
+    <div class="alert alert-danger alert-dismissible fade show d-flex align-items-center gap-2" role="alert">
+        <i class="fa-solid fa-2x fa-circle-exclamation"></i>
+        @Html.ValidationSummary()
+    </div>
+}
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" method="post">
+            <div class="form-group">
+                <label asp-for="Item.Name" class="form-label">
+                    @Html.DisplayNameFor(model => model.Item.Name) <span class="text-danger">*</span>
+                </label>
+                <input asp-for="Item.Name" class="form-control" />
+                <span asp-validation-for="Item.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Item.ShortDescription" class="form-label"></label>
+                <textarea asp-for="Item.ShortDescription" class="form-control"></textarea>
+                <span asp-validation-for="Item.ShortDescription" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Item.LongDescription" class="form-label">
+                    @Html.DisplayNameFor(model => model.Item.LongDescription) <span class="text-danger">*</span>
+                </label>
+                <textarea asp-for="Item.LongDescription" class="form-control"></textarea>
+                <span asp-validation-for="Item.LongDescription" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Item.AllergyInformation" class="form-label"></label>
+                <textarea asp-for="Item.AllergyInformation" class="form-control"></textarea>
+                <span asp-validation-for="Item.AllergyInformation" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Item.Price" class="form-label">
+                    @Html.DisplayNameFor(model => model.Item.Price) <span class="text-danger">*</span>
+                </label>
+                <input asp-for="Item.Price" class="form-control" />
+                <span asp-validation-for="Item.Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Item.ImageUrl" class="form-label">
+                    @Html.DisplayNameFor(model => model.Item.ImageUrl) <span class="text-danger">*</span>
+                </label>
+                <input asp-for="Item.ImageUrl" class="form-control" />
+                <span asp-validation-for="Item.ImageUrl" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Item.ImageThumbnailUrl" class="form-label">
+                    @Html.DisplayNameFor(model => model.Item.ImageUrl) <span class="text-danger">*</span>
+                </label>
+                <input asp-for="Item.ImageThumbnailUrl" class="form-control" />
+                <span asp-validation-for="Item.ImageThumbnailUrl" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Item.IsPieOfTheWeek" class="form-label"></label>
+                <input asp-for="Item.IsPieOfTheWeek" class="form-check-input" />
+                <span asp-validation-for="Item.IsPieOfTheWeek" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Item.InStock" class="form-label"></label>
+                <input asp-for="Item.InStock" class="form-check-input" />
+                <span asp-validation-for="Item.InStock" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Item.Category.CategoryId" class="form-label">
+                    Category <span class="text-danger">*</span>
+                </label>
+                <select asp-for="Item.Category.CategoryId" class="form-control" asp-items="@(new SelectList(Model.Categories, "CategoryId", "CategoryName"))">
+                    <option value="-1">-- Select a Category --</option>
+                </select>
+                <span asp-validation-for="Item.Category.CategoryId" class="text-danger"></span>
+            </div>
+            <div class="form-group mt-2">
+                <input type="submit" value="Create" class="btn btn-primary" />
+                <a asp-action="List" class="btn btn-secondary">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+
+<script>
+    // jQuery script to show the alert if validation summary has errors
+    $(document).ready(function () {
+        var summary = $('div[asp-validation-summary="All"]');
+        if (summary.children('ul').children('li').length > 0) {
+            summary.show();
+        }
+    });
+</script>

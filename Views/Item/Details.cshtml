@@ -1,0 +1,22 @@
+﻿@model Item
+
+<h3 class="my-5">
+    @Model.Name
+</h3>
+
+<div class="row gx-5">
+    <img alt="@Model.Name" src="@Model.ImageUrl" class="img-fluid col-5 bg-primary rounded-3" />
+    <div class="col-7">
+        <h4>@Model.ShortDescription</h4>
+        <p>@Model.LongDescription</p>
+        <h3 class="pull-right">@Model.Price.ToString("c", CultureInfo.CreateSpecificCulture("ar-SA"))</h3>
+        <div class="addToCart">
+            <p class="button">
+
+            </p>
+        </div>
+    </div>
+</div>
+<div class="mt-2">
+    <a asp-action="List">Back to List</a>
+</div>

@@ -1,0 +1,37 @@
+﻿@model Category
+
+<div asp-validation-summary="All" class="text-danger d-none"></div>
+@if (!ViewData.ModelState.IsValid)
+{
+    <div class="alert alert-danger alert-dismissible fade show d-flex align-items-center gap-2" role="alert">
+        <i class="fa-solid fa-2x fa-circle-exclamation"></i>
+        @Html.ValidationSummary()
+    </div>
+}
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit" method="post">
+            <div class="form-group">
+                <input type="hidden" asp-for="CategoryId" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="CategoryName" class="form-label">@Html.DisplayNameFor(model => model.CategoryName) <span class="text-danger">*</span></label>
+                <input asp-for="CategoryName" class="form-control" />
+                <span asp-validation-for="CategoryName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="form-label"></label>
+                <textarea asp-for="Description" class="form-control"></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group mt-2">
+                <input type="submit" value="Update" class="btn btn-primary" />
+                <a asp-action="List" class="btn btn-secondary">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Item Shop Administration</title>
+    <link href='https://fonts.googleapis.com/css?family=Work+Sans' rel='stylesheet' type='text/css'>
+    <link href="~/lib/bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/css/site.css" rel="stylesheet" />
+    <link href="~/lib/font-awesome/css/all.css" rel="stylesheet" />
+    <base href="/" />
+</head>
+<body class="d-flex flex-column min-vh-100">
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" aria-label="Bethany's Item Shop Administration navigation header">
+            <div class="container-xl">
+                <a class="navbar-brand" asp-controller="Home" asp-action="Index">
+                    <img src="images/bethanys-pie-shop-logo_horiz-white.png" width="75" class="d-inline-block align-top mb-2 mt-1" alt="Bethany's Item Shop Logo">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a asp-controller="Home" asp-action="Index" class="nav-link">Home</a>
+                        </li>
+                        <vc:pie-menu></vc:pie-menu>
+                        <vc:category-menu></vc:category-menu>
+                        <vc:order-menu></vc:order-menu>
+                        <li class="nav-item d-none">
+                            <a asp-controller="Customer" asp-action="List" class="nav-link">Customers</a>
+                        </li>
+                    </ul>
+                    <partial name="_LoginPartial" />
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container flex-grow-1 mb-4">
+
+        @if (TempData["SuccessMessage"] != null)
+        {
+            <div class="alert alert-success alert-dismissible fade show mt-4 d-flex align-items-center gap-2" role="alert">
+                <i class="fa-solid fa-2x fa-circle-check"></i>
+                @TempData["SuccessMessage"]
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        }
+
+        @RenderBody()
+        @RenderSection("scripts", required: false)
+    </main>
+
+    <footer class="bg-primary text-white mt-auto py-3 d-none">
+        <div class="container">
+            <address>
+                <strong>Contact us: </strong><email address="yasir.s.albardawil@gmail.com" content="yasir.s.alvardawil@gmail.com" subject="My subject" body="My body" class="text-white"></email>
+            </address>
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/jquery.js"></script>
+    <script src="~/lib/bootstrap/js/bootstrap.bundle.js"></script>
+</body>
+</html>

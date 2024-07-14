@@ -1,0 +1,29 @@
+﻿@model IEnumerable<Category>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Category ID</th>
+            <th>Category Name</th>
+            <th>Description</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var category in Model)
+        {
+            <tr>
+                <td>@category.CategoryId</td>
+                <td>@category.CategoryName</td>
+                <td>@category.Description</td>
+                <th>
+                    <a class="text-primary" asp-action="Edit" asp-route-id="@category.CategoryId"><i class="fa fa-edit"></i></a>
+                    <a class="text-primary" asp-action="Details" asp-route-id="@category.CategoryId"><i class="fa fa-eye"></i></a>
+                    @if (User.IsInRole("SuperAdmin"))
+                    {
+                        <a class="text-danger" asp-action="Delete" asp-route-id="@category.CategoryId"><i class="fa fa-trash-can"></i></a>
+                    }
+            </tr>
+        }
+    </tbody>
+</table>

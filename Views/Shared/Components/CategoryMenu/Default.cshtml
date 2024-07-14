@@ -1,0 +1,24 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model IEnumerable<Category>
+
+<li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle"
+       data-toggle="dropdown"
+       href="#"
+       role="button"
+       data-bs-toggle="dropdown"
+       id="nav-dropdown"
+       aria-expanded="false">
+        Manage Categories
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-dropdown">
+        <li>
+            <a asp-controller="Category" asp-action="List" asp-route-Category="" class="dropdown-item">All Categories</a>
+        </li>
+    </ul>
+</li>

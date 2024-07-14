@@ -1,0 +1,39 @@
+﻿@model UserListViewModel
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>User Name</th>
+            <th>Email</th>
+            <th>Email Confirmed</th>
+            <th>Role</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model.AllUsers)
+        {
+            <tr>
+                <td>@user.Id</td>
+                <td>@user.UserName</td>
+                <td>@user.Email</td>
+                <td>@user.EmailConfirmed</td>
+                <th>
+                    
+                </th>
+                <th>
+                      <div class="d-flex gap-2">
+                        <a class="text-primary" asp-action="AddRole" asp-route-id="@user.Id"><i class="fa fa-plus"></i></a>
+                        <a class="text-primary" asp-action="Edit" asp-route-id="@user.Id"><i class="fa fa-edit"></i></a>
+                        <a class="text-primary" asp-action="Details" asp-route-id="@user.Id"><i class="fa fa-eye"></i></a>
+                        @if (User.IsInRole("SuperAdmin"))
+                        {
+                            <a class="text-danger" asp-action="Delete" asp-route-id="@user.Id"><i class="fa fa-trash-can"></i></a>
+                        }
+                      </div>
+                </th>
+            </tr>
+        }
+    </tbody>
+</table>                

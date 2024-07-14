@@ -1,0 +1,129 @@
+﻿@model PieShop.Models.Order
+
+@{
+    ViewData["Title"] = "Order Details";
+}
+
+<h1 class="mt-4">Order Details</h1>
+
+<div class="card mt-4">
+    <div class="card-header">
+        Order Information
+    </div>
+    <div class="card-body">
+        <h4 class="card-title">Order</h4>
+        <hr />
+        <div class="row mb-3">
+            <div class="col-sm-3 fw-bold">
+                @Html.DisplayNameFor(model => model.OrderId)
+            </div>
+            <div class="col-sm-9">
+                @Html.DisplayFor(model => model.OrderId)
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-sm-3 fw-bold">
+                @Html.DisplayNameFor(model => model.FirstName)
+            </div>
+            <div class="col-sm-9">
+                @Html.DisplayFor(model => model.FirstName)
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-sm-3 fw-bold">
+                @Html.DisplayNameFor(model => model.LastName)
+            </div>
+            <div class="col-sm-9">
+                @Html.DisplayFor(model => model.LastName)
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-sm-3 fw-bold">
+                @Html.DisplayNameFor(model => model.Email)
+            </div>
+            <div class="col-sm-9">
+                @Html.DisplayFor(model => model.Email)
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-sm-3 fw-bold">
+                @Html.DisplayNameFor(model => model.AddressLine1)
+            </div>
+            <div class="col-sm-9">
+                @Html.DisplayFor(model => model.AddressLine1)
+            </div>
+        </div>
+        @if (!string.IsNullOrEmpty(Model.AddressLine2))
+        {
+            <div class="row mb-3">
+                <div class="col-sm-3 fw-bold">
+                    @Html.DisplayNameFor(model => model.AddressLine2)
+                </div>
+                <div class="col-sm-9">
+                    @Html.DisplayFor(model => model.AddressLine2)
+                </div>
+            </div>
+        }
+        <div class="row mb-3">
+            <div class="col-sm-3 fw-bold">
+                @Html.DisplayNameFor(model => model.ZipCode)
+            </div>
+            <div class="col-sm-9">
+                @Html.DisplayFor(model => model.ZipCode)
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-sm-3 fw-bold">
+                @Html.DisplayNameFor(model => model.City)
+            </div>
+            <div class="col-sm-9">
+                @Html.DisplayFor(model => model.City)
+            </div>
+        </div>
+        @if (!string.IsNullOrEmpty(Model.State))
+        {
+            <div class="row mb-3">
+                <div class="col-sm-3 fw-bold">
+                    @Html.DisplayNameFor(model => model.State)
+                </div>
+                <div class="col-sm-9">
+                    @Html.DisplayFor(model => model.State)
+                </div>
+            </div>
+        }
+        <div class="row mb-3">
+            <div class="col-sm-3 fw-bold">
+                @Html.DisplayNameFor(model => model.Country)
+            </div>
+            <div class="col-sm-9">
+                @Html.DisplayFor(model => model.Country)
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-sm-3 fw-bold">
+                @Html.DisplayNameFor(model => model.PhoneNumber)
+            </div>
+            <div class="col-sm-9">
+                @Html.DisplayFor(model => model.PhoneNumber)
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-sm-3 fw-bold">
+                @Html.DisplayNameFor(model => model.OrderTotal)
+            </div>
+            <div class="col-sm-9">
+                @Html.DisplayFor(model => model.OrderTotal)
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-sm-3 fw-bold">
+                @Html.DisplayNameFor(model => model.OrderPlaced)
+            </div>
+            <div class="col-sm-9">
+                @Html.DisplayFor(model => model.OrderPlaced)
+            </div>
+        </div>
+
+        <a asp-action="List" class="btn btn-primary mt-4">Back to List</a>
+    </div>
+</div>

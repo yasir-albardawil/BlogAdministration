@@ -1,0 +1,41 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model CustomerViewModel
+<table class="table table-striped mt-4">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Phone</th>
+            <th scope="col">Address</th>
+            <th scope="col">City</th>
+            <th scope="col">Region</th>
+            <th scope="col">PostalCode</th>
+            <th scope="col">Country</th>
+            <th scope="col">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach(var customer in Model.AllCustomers)
+{
+            <tr>
+                <th scope="row">@customer.Id</th>
+                <td>@customer.Name</td>
+                <td>@customer.Email</td>
+                <td>@customer.Phone</td>
+                <td>@customer.Address</td>
+                <td>@customer.City</td>
+                <td>@customer.Region</td>
+                <td>@customer.PostalCode</td>
+                <td>@customer.Country</td>
+            </tr>
+
+ 
+}
+    </tbody>
+</table>

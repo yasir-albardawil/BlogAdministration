@@ -1,0 +1,51 @@
+﻿@model IEnumerable<Item>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Item ID</th>
+            <th>Name</th>
+            <th>Short Description</th>
+            <th>Long Description</th>
+            <th>Price</th>
+            <th>Image</th>
+            <th>Thumbnail</th>
+            <th>Item of the Week</th>
+            <th>In Stock</th>
+            <th>Category</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var pie in Model)
+        {
+            <tr>
+                <td>@pie.Id</td>
+                <td>@pie.Name</td>
+                <td>@pie.ShortDescription</td>
+                <td>@pie.LongDescription</td>
+                <td>@pie.Price.ToString("C", CultureInfo.CreateSpecificCulture("ar-SA"))</td>
+                <td><img class="rounded-3" src="@pie.ImageUrl" alt="@pie.Name" style="width:100px;" /></td>
+                <td><img class="rounded-3" src="@pie.ImageThumbnailUrl" alt="@pie.Name" style="width:50px;" /></td>
+                <td>
+                    <i class="d-none fa-solid fa-2x @(pie.IsPieOfTheWeek ? "fa-circle-check text-success" : "fa-circle-xmark text-danger")"></i>
+                    <status value="@pie.IsPieOfTheWeek"></status>
+                </td>
+                <td>
+                    <status value="@pie.InStock"></status>
+                </td>
+                <td>@pie.Category.CategoryName</td>
+                <th>
+                      <div class="d-flex gap-2">
+                        <a class="text-primary" asp-action="Edit" asp-route-id="@pie.Id"><i class="fa fa-edit"></i></a>
+                        <a class="text-primary" asp-action="Details" asp-route-id="@pie.Id"><i class="fa fa-eye"></i></a>
+                        @if (User.IsInRole("SuperAdmin"))
+                        {
+                            <a class="text-danger" asp-action="Delete" asp-route-id="@pie.Id"><i class="fa fa-trash-can"></i></a>
+                        }
+                      </div>
+                </th>
+            </tr>
+        }
+    </tbody>
+</table>                
